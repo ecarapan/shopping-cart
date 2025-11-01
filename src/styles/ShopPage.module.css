@@ -1,0 +1,18 @@
+.shopPage {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+  gap: 20px;
+}
+
+.shopPage main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 350px) {
+  .shopPage main {
+    align-self: center;
+  }
+}

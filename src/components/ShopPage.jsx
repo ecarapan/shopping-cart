@@ -3,7 +3,15 @@ import { useOutletContext } from "react-router";
 import Product from "./Product";
 
 export default function ShopPage() {
-  const { productList } = useOutletContext();
+  const { productList, setProductList, cartList, setCartList } =
+    useOutletContext();
+
+  function addToCart(id) {
+    const currentProduct = productList.find((product) => product.id === id);
+    if (currentProduct) {
+      setCartList([...cartList, currentProduct]);
+    }
+  }
 
   return (
     <div className={styles.shopPage}>
@@ -14,8 +22,11 @@ export default function ShopPage() {
             key={product.id}
             title={product.title}
             price={product.price}
-            description={product.description}
+            category={product.category}
+            rating={product.rating}
+            reviews={product.reviews}
             image={product.image}
+            onAddToCart={() => addToCart(product.id)}
           ></Product>
         ))}
       </main>

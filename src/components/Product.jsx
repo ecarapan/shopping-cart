@@ -1,11 +1,34 @@
 import styles from "../styles/Product.module.css";
 
-export default function Product({ title, price, description, image }) {
+export default function Product({
+  title,
+  price,
+  category,
+  rating,
+  reviews,
+  image,
+  onAddToCart,
+}) {
   return (
-    <div className={styles.product}>
-      <img src={image} alt={description} />
-      <h2>{title}</h2>
-      <p>{price}</p>
-    </div>
+    <article className={styles.product}>
+      <img src={image} alt={title} />
+      <section>
+        <div className={styles.info}>
+          <h2>{title}</h2>
+          <p>{category}</p>
+          <div>
+            <p>{rating} ★</p>
+            <p>({reviews})</p>
+          </div>
+        </div>
+        <div className={styles.actions}>
+          <div>
+            <input type="number" defaultValue={1} />
+            <p>${price}</p>
+          </div>
+          <button onClick={onAddToCart}>Add to Cart</button>
+        </div>
+      </section>
+    </article>
   );
 }

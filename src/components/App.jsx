@@ -1,8 +1,8 @@
 import styles from "../styles/App.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router";
 import { Outlet } from "react-router";
+import NavBar from "./NavBar";
 
 export default function App() {
   const [productList, setProductList] = useState([]);
@@ -18,7 +18,9 @@ export default function App() {
           id: product.id,
           title: product.title,
           price: product.price,
-          description: product.description,
+          category: product.category,
+          rating: product.rating.rate,
+          reviews: product.rating.count,
           image: product.image,
         }))
       );
@@ -29,12 +31,12 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart</Link>
-      </nav>
-      <Outlet context={{ productList, cartList }} />
+      <NavBar></NavBar>
+      <div className={styles.content}>
+        <Outlet
+          context={{ productList, setProductList, cartList, setCartList }}
+        />
+      </div>
     </div>
   );
 }
