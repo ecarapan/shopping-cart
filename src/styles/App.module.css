@@ -1,3 +1,20 @@
 .app {
   min-height: 100vh;
 }
+
+.app nav {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(137, 94, 255);
+  padding: 20px;
+  gap: 50px;
+}
+
+.app nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.app nav a:hover {
+  color: black;
+}
