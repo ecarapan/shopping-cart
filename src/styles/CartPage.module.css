@@ -5,8 +5,40 @@
   gap: 20px;
 }
 
+.cartPage section {
+  display: flex;
+  gap: 50px;
+}
+
 .cartPage main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
+}
+
+.cartPage aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.2);
+  padding: 20px;
+  flex: 1;
+  max-width: 500px;
+  align-self: flex-start;
+  gap: 76px;
+  border-radius: 20px;
+}
+
+.cartPage aside button {
+  background-color: rgb(48, 48, 48);
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 20px;
+  transition: transform 0.1s;
+}
+
+.cartPage aside button:active {
+  transform: scale(0.95);
 }

@@ -1,31 +1,60 @@
 import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
 import CartItem from "./CartItem";
+import { useState } from "react";
 
 export default function CartPage() {
   const { productList, setProductList, cartList, setCartList } =
     useOutletContext();
+  const [cartTotal, setCartTotal] = useState(0);
 
   function removeFromCart(id) {
     const newCartList = cartList.filter((product) => product.id !== id);
     setCartList(newCartList);
   }
 
+  function handleQuantityChange(id, quantity) {
+    const newCartList = cartList.map((product) => {
+      if (product.id === id) {
+        return { ...product, quantity: quantity };
+      } else {
+        return product;
+      }
+    });
+    setCartList(newCartList);
+  }
+
+  function getCartTotal() {}
+
+  if (cartList.length === 0) {
+    return null;
+  }
+
   return (
     <div className={styles.cartPage}>
       <h1>Cart</h1>
-      <main>
-        {cartList.map((product) => (
-          <CartItem
-            key={product.id}
-            image={product.image}
-            title={product.title}
-            price={product.price}
-            quantity={product.quantity}
-            onRemoveFromCart={() => removeFromCart(product.id)}
-          ></CartItem>
-        ))}
-      </main>
+      <section>
+        <main>
+          {cartList.map((product) => (
+            <CartItem
+              key={product.id}
+              image={product.image}
+              title={product.title}
+              price={product.price}
+              category={product.category}
+              quantity={product.quantity}
+              onRemoveFromCart={() => removeFromCart(product.id)}
+              onQuantityChange={(quantity) =>
+                handleQuantityChange(product.id, quantity)
+              }
+            ></CartItem>
+          ))}
+        </main>
+        <aside>
+          <h2>Total: ${cartTotal}</h2>
+          <button>Checkout</button>
+        </aside>
+      </section>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-      <NavBar></NavBar>
+      <NavBar cartLength={cartList.length} />
       <div className={styles.content}>
         <Outlet
           context={{ productList, setProductList, cartList, setCartList }}

@@ -1,7 +1,7 @@
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router";
 
-export default function NavBar() {
+export default function NavBar({ cartLength }) {
   return (
     <header className={styles.navBar}>
       <h1>Fake Shop</h1>
@@ -23,7 +23,7 @@ export default function NavBar() {
           to="/cart"
           className={({ isActive }) => (isActive ? styles.active : undefined)}
         >
-          Cart
+          Cart {cartLength > 0 && "- " + cartLength}
         </NavLink>
       </nav>
     </header>
