@@ -6,7 +6,6 @@ import { useState } from "react";
 export default function CartPage() {
   const { productList, setProductList, cartList, setCartList } =
     useOutletContext();
-  const [cartTotal, setCartTotal] = useState(0);
 
   function removeFromCart(id) {
     const newCartList = cartList.filter((product) => product.id !== id);
@@ -24,7 +23,13 @@ export default function CartPage() {
     setCartList(newCartList);
   }
 
-  function getCartTotal() {}
+  function getCartTotal() {
+    let cartTotal = 0;
+    cartList.forEach((product) => {
+      cartTotal = cartTotal + product.price * product.quantity;
+    });
+    return cartTotal.toFixed(2);
+  }
 
   if (cartList.length === 0) {
     return null;
@@ -51,7 +56,7 @@ export default function CartPage() {
           ))}
         </main>
         <aside>
-          <h2>Total: ${cartTotal}</h2>
+          <h2>Total: ${getCartTotal()}</h2>
           <button>Checkout</button>
         </aside>
       </section>

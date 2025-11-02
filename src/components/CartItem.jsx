@@ -10,9 +10,9 @@ export default function CartItem({
   onRemoveFromCart,
   onQuantityChange,
 }) {
-  const [itemTotal, setItemTotal] = useState(0);
-
-  // useEffect();
+  function getItemTotal() {
+    return (price * quantity).toFixed(2);
+  }
 
   return (
     <article className={styles.cartItem}>
@@ -31,7 +31,7 @@ export default function CartItem({
           min={1}
           max={99}
         />
-        <p>${price}</p>
+        <p>${getItemTotal()}</p>
         <button onClick={onRemoveFromCart}>Remove</button>
       </div>
     </article>
