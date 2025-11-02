@@ -6,10 +6,23 @@ export default function ShopPage() {
   const { productList, setProductList, cartList, setCartList } =
     useOutletContext();
 
-  function addToCart(id) {
+  function addToCart(id, quantity) {
+    const cartProduct = cartList.find((product) => product.id === id);
+    if (cartProduct) {
+      const newCartList = cartList.map((product) => {
+        if (product.id === id) {
+          return { ...product, quantity: product.quantity + quantity };
+        } else {
+          return product;
+        }
+      });
+      setCartList(newCartList);
+      return;
+    }
+
     const currentProduct = productList.find((product) => product.id === id);
     if (currentProduct) {
-      setCartList([...cartList, currentProduct]);
+      setCartList([...cartList, { ...currentProduct, quantity: quantity }]);
     }
   }
 
@@ -26,7 +39,7 @@ export default function ShopPage() {
             rating={product.rating}
             reviews={product.reviews}
             image={product.image}
-            onAddToCart={() => addToCart(product.id)}
+            onAddToCart={(quantity) => addToCart(product.id, quantity)}
           ></Product>
         ))}
       </main>

@@ -1,8 +1,14 @@
 .navBar {
   display: flex;
-  justify-content: center;
-  background-color: rgb(109, 109, 255);
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(48, 48, 48);
   padding: 20px;
+  color: white;
+}
+
+.navBar nav {
+  display: flex;
   gap: 50px;
 }
 

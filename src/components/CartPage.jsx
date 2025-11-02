@@ -21,6 +21,7 @@ export default function CartPage() {
             image={product.image}
             title={product.title}
             price={product.price}
+            quantity={product.quantity}
             onRemoveFromCart={() => removeFromCart(product.id)}
           ></CartItem>
         ))}
