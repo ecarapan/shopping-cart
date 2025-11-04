@@ -1,0 +1,30 @@
+.homePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: rgb(245, 245, 245);
+  height: 100%;
+}
+
+.homePage img {
+  height: 450px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.homePage button {
+  margin-top: 20px;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 20px;
+  transition: transform 0.1s;
+}
+
+.homePage button:active {
+  transform: scale(0.95);
+}

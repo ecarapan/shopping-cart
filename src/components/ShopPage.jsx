@@ -28,7 +28,7 @@ export default function ShopPage() {
 
   return (
     <div className={styles.shopPage}>
-      <h1>Shop for stuff</h1>
+      <h1>Products</h1>
       <main>
         {productList.map((product) => (
           <Product

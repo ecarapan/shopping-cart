@@ -23,7 +23,7 @@ export default function NavBar({ cartLength }) {
           to="/cart"
           className={({ isActive }) => (isActive ? styles.active : undefined)}
         >
-          Cart {cartLength > 0 && "- " + cartLength}
+          Cart ({cartLength})
         </NavLink>
       </nav>
     </header>

@@ -3,6 +3,8 @@
   flex-direction: column;
   padding: 20px 50px;
   gap: 20px;
+  background-color: rgb(245, 245, 245);
+  min-height: 100%;
 }
 
 .cartPage section {
@@ -28,6 +30,7 @@
   align-self: flex-start;
   gap: 76px;
   border-radius: 20px;
+  background-color: white;
 }
 
 .cartPage aside button {
@@ -41,4 +44,9 @@
 
 .cartPage aside button:active {
   transform: scale(0.95);
+}
+
+.emptyCart {
+  align-items: center;
+  justify-content: center;
 }

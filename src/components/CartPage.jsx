@@ -2,6 +2,7 @@ import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
 import CartItem from "./CartItem";
 import { useState } from "react";
+import { dispatchDOMEvent } from "@testing-library/user-event/dist/cjs/event/dispatchEvent.js";
 
 export default function CartPage() {
   const { productList, setProductList, cartList, setCartList } =
@@ -32,7 +33,11 @@ export default function CartPage() {
   }
 
   if (cartList.length === 0) {
-    return null;
+    return (
+      <div className={`${styles.cartPage} ${styles.emptyCart}`}>
+        <h1>Your Fake Shop Cart is empty</h1>
+      </div>
+    );
   }
 
   return (
@@ -56,7 +61,11 @@ export default function CartPage() {
           ))}
         </main>
         <aside>
-          <h2>Total: ${getCartTotal()}</h2>
+          <div>
+            <h2>Total: ${getCartTotal()}</h2>
+            <p>Shipping: Free</p>
+            <p>Sales Tax: N/A</p>
+          </div>
           <button>Checkout</button>
         </aside>
       </section>
