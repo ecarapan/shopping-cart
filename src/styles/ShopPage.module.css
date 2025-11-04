@@ -18,3 +18,23 @@
     align-self: center;
   }
 }
+
+.loading {
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  height: 60px;
+  width: 60px;
+  border: 15px solid rgb(48, 48, 48);
+  border-top: 15px solid rgb(245, 245, 245);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

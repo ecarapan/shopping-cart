@@ -12,7 +12,7 @@
   object-fit: contain;
   border-radius: 20px;
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 2px 5px 5px 5px;
 }
 
 .homePage button {

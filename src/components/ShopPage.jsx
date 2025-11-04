@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router";
 import Product from "./Product";
 
 export default function ShopPage() {
-  const { productList, setProductList, cartList, setCartList } =
+  const { productList, cartList, setCartList, loading, error } =
     useOutletContext();
 
   function addToCart(id, quantity) {
@@ -24,6 +24,28 @@ export default function ShopPage() {
     if (currentProduct) {
       setCartList([...cartList, { ...currentProduct, quantity: quantity }]);
     }
+  }
+
+  if (error) {
+    return (
+      <div className={`${styles.shopPage} ${styles.loading}`}>
+        <h1 role="alert" aria-live="assertive" className={styles.errorSpinner}>
+          {error}
+        </h1>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className={`${styles.shopPage} ${styles.loading}`}>
+        <div
+          role="status"
+          aria-live="polite"
+          className={styles.loadingSpinner}
+        ></div>
+      </div>
+    );
   }
 
   return (
