@@ -4,7 +4,7 @@
   padding: 20px 50px;
   gap: 20px;
   background-color: rgb(245, 245, 245);
-  min-height: 100%;
+  height: 100%;
 }
 
 .cartPage section {
@@ -33,20 +33,27 @@
   background-color: white;
 }
 
-.cartPage aside button {
+.cartPage button {
   background-color: rgb(48, 48, 48);
   color: white;
-  padding: 7px;
+  padding: 7px 30px;
   border: none;
   border-radius: 20px;
   transition: transform 0.1s;
+  width: 100%;
 }
 
-.cartPage aside button:active {
+.cartPage button:active {
   transform: scale(0.95);
 }
 
 .emptyCart {
   align-items: center;
   justify-content: center;
+}
+
+.emptyCart div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

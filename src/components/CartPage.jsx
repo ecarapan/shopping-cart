@@ -1,12 +1,10 @@
 import styles from "../styles/CartPage.module.css";
 import { useOutletContext } from "react-router";
 import CartItem from "./CartItem";
-import { useState } from "react";
-import { dispatchDOMEvent } from "@testing-library/user-event/dist/cjs/event/dispatchEvent.js";
+import { Link } from "react-router";
 
 export default function CartPage() {
-  const { productList, setProductList, cartList, setCartList } =
-    useOutletContext();
+  const { cartList, setCartList } = useOutletContext();
 
   function removeFromCart(id) {
     const newCartList = cartList.filter((product) => product.id !== id);
@@ -35,7 +33,12 @@ export default function CartPage() {
   if (cartList.length === 0) {
     return (
       <div className={`${styles.cartPage} ${styles.emptyCart}`}>
-        <h1>Your Fake Shop Cart is empty</h1>
+        <div>
+          <h1>Your Fake Shop Cart is empty</h1>
+          <Link to="/shop">
+            <button>Shop now</button>
+          </Link>
+        </div>
       </div>
     );
   }
