@@ -1,4 +1,4 @@
-# Project Name
+Shopping Cart
 
 A shopping site with functional cart.
 
