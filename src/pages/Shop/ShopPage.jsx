@@ -1,30 +1,9 @@
-import styles from "../styles/ShopPage.module.css";
-import { useOutletContext } from "react-router";
-import Product from "./Product";
+import styles from "@/pages/Shop/ShopPage.module.css";
+import Product from "@/pages/Shop/Product/Product.jsx";
+import { useShopPage } from "@/pages/Shop/useShopPage";
 
 export default function ShopPage() {
-  const { productList, cartList, setCartList, loading, error } =
-    useOutletContext();
-
-  function addToCart(id, quantity) {
-    const cartProduct = cartList.find((product) => product.id === id);
-    if (cartProduct) {
-      const newCartList = cartList.map((product) => {
-        if (product.id === id) {
-          return { ...product, quantity: product.quantity + quantity };
-        } else {
-          return product;
-        }
-      });
-      setCartList(newCartList);
-      return;
-    }
-
-    const currentProduct = productList.find((product) => product.id === id);
-    if (currentProduct) {
-      setCartList([...cartList, { ...currentProduct, quantity: quantity }]);
-    }
-  }
+  const { productList, loading, error, addToCart } = useShopPage();
 
   if (error) {
     return (

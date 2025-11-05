@@ -4,6 +4,7 @@
   padding: 20px 50px;
   gap: 20px;
   background-color: rgb(245, 245, 245);
+  flex: 1;
 }
 
 .cartPage section {
@@ -49,7 +50,6 @@
 .emptyCart {
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 .emptyCart div {

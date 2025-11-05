@@ -1,10 +1,6 @@
-import styles from "../styles/App.module.css";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Outlet } from "react-router";
-import NavBar from "./NavBar";
+import { useState, useEffect } from "react";
 
-export default function App() {
+export function useApp() {
   const [productList, setProductList] = useState([]);
   const [cartList, setCartList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,21 +32,12 @@ export default function App() {
     fetchProducts();
   }, []);
 
-  return (
-    <div className={styles.app}>
-      <NavBar cartLength={cartList.length} />
-      <div className={styles.content}>
-        <Outlet
-          context={{
-            productList,
-            setProductList,
-            cartList,
-            setCartList,
-            loading,
-            error,
-          }}
-        />
-      </div>
-    </div>
-  );
+  return {
+    productList,
+    setProductList,
+    cartList,
+    setCartList,
+    loading,
+    error,
+  };
 }

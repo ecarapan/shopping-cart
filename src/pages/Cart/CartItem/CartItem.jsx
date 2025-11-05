@@ -1,4 +1,5 @@
-import styles from "../styles/CartItem.module.css";
+import styles from "@/pages/Cart/CartItem/CartItem.module.css";
+import { useCartItem } from "./useCartItem";
 
 export default function CartItem({
   title,
@@ -9,17 +10,11 @@ export default function CartItem({
   onRemoveFromCart,
   onQuantityChange,
 }) {
-  function getItemTotal() {
-    return (price * quantity).toFixed(2);
-  }
-
-  function handleQuantityInput(e) {
-    let val = e.target.value.replace(/[^\d]/g, "");
-    val = val.replace(/^0+/, "");
-    if (val === "") val = "1";
-    e.target.value = val;
-    onQuantityChange(Number(val));
-  }
+  const { getItemTotal, handleQuantityInput } = useCartItem(
+    price,
+    quantity,
+    onQuantityChange
+  );
 
   return (
     <article className={styles.cartItem}>

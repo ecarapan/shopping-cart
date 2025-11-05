@@ -1,34 +1,11 @@
-import styles from "../styles/CartPage.module.css";
-import { useOutletContext } from "react-router";
-import CartItem from "./CartItem";
+import styles from "@/pages/Cart/CartPage.module.css";
+import CartItem from "@/pages/Cart/CartItem/CartItem";
 import { Link } from "react-router";
+import { useCartPage } from "./useCartPage";
 
 export default function CartPage() {
-  const { cartList, setCartList } = useOutletContext();
-
-  function removeFromCart(id) {
-    const newCartList = cartList.filter((product) => product.id !== id);
-    setCartList(newCartList);
-  }
-
-  function handleQuantityChange(id, quantity) {
-    const newCartList = cartList.map((product) => {
-      if (product.id === id) {
-        return { ...product, quantity: quantity };
-      } else {
-        return product;
-      }
-    });
-    setCartList(newCartList);
-  }
-
-  function getCartTotal() {
-    let cartTotal = 0;
-    cartList.forEach((product) => {
-      cartTotal = cartTotal + product.price * product.quantity;
-    });
-    return cartTotal.toFixed(2);
-  }
+  const { cartList, removeFromCart, handleQuantityChange, getCartTotal } =
+    useCartPage();
 
   if (cartList.length === 0) {
     return (

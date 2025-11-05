@@ -1,5 +1,5 @@
-import styles from "../styles/Product.module.css";
-import { useState } from "react";
+import styles from "@/pages/Shop/Product/Product.module.css";
+import { useProduct } from "@/pages/Shop/Product/useProduct";
 
 export default function Product({
   title,
@@ -10,19 +10,8 @@ export default function Product({
   image,
   onAddToCart,
 }) {
-  const [quantity, setQuantity] = useState("1");
-
-  function handleAddToCart() {
-    onAddToCart(Number(quantity));
-  }
-
-  function sanitizeQuantityInput(e) {
-    let val = e.target.value.replace(/[^\d]/g, "");
-    val = val.replace(/^0+/, "");
-    if (val === "") val = "1";
-    e.target.value = val;
-    setQuantity(val);
-  }
+  const { quantity, sanitizeQuantityInput, handleAddToCart } =
+    useProduct(onAddToCart);
 
   return (
     <article className={styles.product}>

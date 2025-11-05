@@ -1,4 +1,4 @@
-import styles from "../styles/NavBar.module.css";
+import styles from "@/components/NavBar/NavBar.module.css";
 import { NavLink } from "react-router";
 
 export default function NavBar({ cartLength }) {

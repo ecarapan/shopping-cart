@@ -4,7 +4,7 @@
   padding: 20px 50px;
   gap: 20px;
   background-color: rgb(245, 245, 245);
-  min-height: 100%;
+  flex: 1;
 }
 
 .shopPage main {

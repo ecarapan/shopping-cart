@@ -1,5 +1,5 @@
-import styles from "../styles/HomePage.module.css";
-import productsImg from "../assets/products.png";
+import styles from "@/pages/Home/HomePage.module.css";
+import productsImg from "@/assets/products.png";
 import { Link } from "react-router";
 
 export default function HomePage() {

@@ -4,7 +4,7 @@
   align-items: center;
   gap: 50px;
   background-color: rgb(245, 245, 245);
-  height: 100%;
+  flex: 1;
 }
 
 .homePage img {
