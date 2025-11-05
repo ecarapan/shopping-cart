@@ -13,6 +13,14 @@ export default function CartItem({
     return (price * quantity).toFixed(2);
   }
 
+  function handleQuantityInput(e) {
+    let val = e.target.value.replace(/[^\d]/g, "");
+    val = val.replace(/^0+/, "");
+    if (val === "") val = "1";
+    e.target.value = val;
+    onQuantityChange(Number(val));
+  }
+
   return (
     <article className={styles.cartItem}>
       <div className={styles.info}>
@@ -24,7 +32,7 @@ export default function CartItem({
       </div>
       <div className={styles.actions}>
         <input
-          onChange={(e) => onQuantityChange(Number(e.target.value))}
+          onInput={handleQuantityInput}
           type="number"
           value={quantity}
           min={1}

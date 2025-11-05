@@ -1,5 +1,5 @@
 import styles from "../styles/Product.module.css";
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function Product({
   title,
@@ -10,11 +10,18 @@ export default function Product({
   image,
   onAddToCart,
 }) {
-  const inputRef = useRef();
+  const [quantity, setQuantity] = useState("1");
 
   function handleAddToCart() {
-    const quantity = Number(inputRef.current.value);
-    onAddToCart(quantity);
+    onAddToCart(Number(quantity));
+  }
+
+  function sanitizeQuantityInput(e) {
+    let val = e.target.value.replace(/[^\d]/g, "");
+    val = val.replace(/^0+/, "");
+    if (val === "") val = "1";
+    e.target.value = val;
+    setQuantity(val);
   }
 
   return (
@@ -31,7 +38,12 @@ export default function Product({
         </div>
         <div className={styles.actions}>
           <div>
-            <input ref={inputRef} type="number" min={1} defaultValue={1} />
+            <input
+              type="number"
+              min={1}
+              value={quantity}
+              onInput={sanitizeQuantityInput}
+            />
             <p>${price}</p>
           </div>
           <button onClick={handleAddToCart}>Add to Cart</button>
