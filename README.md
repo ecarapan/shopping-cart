@@ -1,4 +1,4 @@
-## Shopping Cart
+# Shopping Cart
 
 A shopping site with functional cart.
 
